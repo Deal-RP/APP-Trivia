@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
 import { ShareDataService } from './services/share-data.service';
-import { PipeModule } from './pipe/pipe.module';
 
 @NgModule({
   declarations: [AppComponent],
