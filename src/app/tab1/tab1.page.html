@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <center>Bienvenido {{ name }}</center>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>Ingrese su nombre:</ion-card-title>
+
+      <ion-card-subtitle>
+        <ion-input type="text" placeholder="Nombre" [(ngModel)]="name"></ion-input>
+      </ion-card-subtitle>
+      
+    </ion-card-header>
+
+      <ion-list>
+        <ion-radio-group (ionChange)="changeCategory( $event )">
+          <ion-list-header>
+              <ion-label>Categorias</ion-label>
+          </ion-list-header>
+          <ion-item *ngFor="let c of categorias">
+            <ion-label>{{ c.name | titlecase}}</ion-label>
+            <ion-radio value="{{c.name}}"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+
+      <ion-card-content>
+        <ion-button (click)="jugar()" expand="block" fill="clear" shape="round">
+          Jugar!!!
+        </ion-button>
+      </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

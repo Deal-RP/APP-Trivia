@@ -1,0 +1,56 @@
+
+<ion-header>
+  <ion-toolbar>
+    <center>
+      <ion-button slot="start" expand="block" fill="clear" shape="round">
+        <ion-icon name="podium-outline"></ion-icon>
+        <ion-chip color="primary" mode="ios" outline="true">
+          <ion-label>{{numCorrectas}} / 20</ion-label>
+        </ion-chip>
+
+        <ion-chip color="primary" mode="ios" outline="true">
+
+          <div *ngIf="minutes < 10; then yesMinute else noMinute"></div>
+          <ng-template #yesMinute>0{{minutes}}:</ng-template>
+          <ng-template #noMinute>{{minutes}}:</ng-template>
+    
+    
+          <div *ngIf="seconds < 10; then yesSec else noSec"></div>
+          <ng-template #yesSec>0{{seconds}}</ng-template>
+          <ng-template #noSec>{{seconds}}</ng-template>
+    
+        </ion-chip>
+
+      </ion-button>
+
+    </center>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-label *ngIf="num < 20"> {{num + 1}}.</ion-label>
+      <ion-card-title>{{pregunta}}</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-list>
+        <ion-radio-group (ionChange)="changeRespuesta( $event )">
+
+          <ion-item *ngFor="let r of respuestas">
+            <ion-label [color]="isTrue">{{ r | titlecase}}</ion-label>
+            <ion-radio value="{{r}}"></ion-radio>
+          </ion-item>
+
+        </ion-radio-group>
+      </ion-list>
+      <ion-button (click)="siguiente()" expand="block" fill="clear" shape="round">
+        {{msgButton}}
+      </ion-button>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
